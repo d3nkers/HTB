@@ -1,0 +1,151 @@
+HTB INTRODUCTION TO ACTIVE DIRECTORY
+
+Q: What Active Directory structure can contain one or more domains?
+A: Forest
+
+Q: True or False; It can be common to see multiple domains linked together by trust relationships?
+A: true
+
+
+Q: Active Directory provides authentication and <____> within a Windows domain environment.
+A: authorization
+
+
+Q: What is known as the "Blueprint" of an Active Directory environment?
+A: schema
+
+
+Q: What uniquely identifies a Service instance? (full name, space-separated, not abbreviated)
+A: Service Principal Name
+
+
+Q: True or False; Group Policy objects can be applied to user and computer objects.
+A: true
+
+
+Q: What container in AD holds deleted objects?
+A: tombstone
+
+
+Q: What file contains the hashes of passwords for all users in a domain?
+A: NTDS.dit
+
+
+Q: True or False; Computers are considered leaf objects.
+A: true
+
+
+Q: <___> are objects that are used to store similar objects for ease of administration. (Fill in the blank)
+A: Organizational Units
+
+
+Q: What AD object handles all authentication requests for a domain?
+A: Domain Controller
+
+
+Q: What role maintains time for a domain?
+A: PDC Emulator
+
+
+Q: What domain functional level introduced Managed Service Accounts?
+A: Windows Server 2008 R2
+
+
+Q: What type of trust is a link between two child domains in a forest?
+A: Cross-link
+
+
+Q: What role ensures that objects in a domain are not assigned the same SID? (full name)
+A: Relative ID Master
+
+
+Q: What networking port does Kerberos use?
+A: 88
+
+
+Q: What protocol is utilized to translate names into IP addresses? (acronym)
+A: DNS
+
+
+Q: What protocol does RFC 4511 specify? (acronym)
+A: LDAP
+
+
+Q: What Hashing protocol is capable of symmetric and asymmetric cryptography?
+A: kerberos
+
+
+Q: NTLM uses three messages to authenticate; Negotiate, Challenge, and <__>. What is the missing message? (fill in the blank)
+A: AUTHENTICATE
+
+
+Q: How many hashes does the Domain Cached Credentials mechanism save to a host by default?
+A: 10
+
+
+Q: True or False; A local user account can be used to login to any domain connected host.
+A: False
+
+
+Q:  What default user account has the SID "S-1-5-domain-500" ?
+A: administrator
+
+
+Q: What account has the highest permission level possible on a Windows host
+A: system
+
+
+Q: What user naming attribute is unique to the user and will remain so even if the account is deleted?
+A: ObjectGUID
+
+
+Q: What group type is best utilized for assigning permissions and right to users?
+A: security
+
+
+Q: True or False; A "Global Group" can only contain accounts from the domain where it was created.
+A: true
+
+
+Q: Can a Universal group be converted to a Domain Local group? (yes or no)
+A: yes
+
+
+Q: What built-in group will grant a user full and unrestricted access to a computer?
+A: Administrators
+
+
+Q: What user right grants a user the ability to make backups of a system?
+A: SeBackupPrivilege
+
+
+Q: What Windows command can show us all user rights assigned to the current user?
+A: whoami /priv
+
+
+Q: Confidentiality, <___>, and Availability are the pillars of the CIA Triad. What term is missing? (fill in the blank)
+A: integrity
+
+
+Q:  What security policies can block certain users from running all executables?
+A: Application Control Policies
+
+
+Q: Computer settings for Group Policies are gathered and applied at a <___> minute interval? (answer is a number, fill in the blank )
+A: 90
+
+
+Q: True or False: A policy applied to a user at the domain level would be overwritten by a policy at the site level.
+A: false
+
+
+Q: What Group Policy Object is created when the domain is created?
+A: Default Domain Policy
+
+
+Q:  Once you have finished the tasks, type "COMPLETE" to move on.
+A: COMPLETE
+
+Q:  Once you have finished the tasks, type "COMPLETE" to move on.
+A: COMPLETE
+

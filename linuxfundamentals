@@ -1,0 +1,97 @@
+HTB LINUX FUNDAMENTALS
+
+Q: Find out the machine hardware name and submit it as the answer.
+A: x86_64
+
+
+Q: What is the path to htb-student's home directory?
+A: /home/htb-student
+
+Q: What is the path to the htb-student's mail?
+A: /var/mail/htb-student
+
+
+Q: Which shell is specified for the htb-student user?
+A: /bin/bash
+
+
+Q: Which kernel version is installed on the system? (Format: 1.22.3)
+A: 4.15.0
+
+
+Q: What is the name of the network interface that MTU is set to 1500?
+A: ens192
+
+
+Q: What is the name of the hidden "history" file in the htb-user's home directory?
+A: .bash_history
+
+
+Q: What is the index number of the "sudoers" file in the "/etc" directory?
+A: 147627
+
+
+Q: What is the name of the last modified file in the "/var/backups" directory?
+A: apt.extended_states.0
+
+
+Q: What is the inode number of the "shadow.bak" file in the "/var/backups" directory?
+A: 265293
+
+
+Q: What is the name of the config file that has been created after 2020-03-03 and is smaller than 28k but larger than 25k?
+A: 00-mesa-defaults.conf
+
+Q: How many files exist on the system that have the ".bak" extension?
+A: 4
+
+
+Q: Submit the full path of the "xxd" binary.
+A: /usr/bin/xxd
+
+Q: How many files exist on the system that have the ".log" file extension?
+A: 32
+
+
+Q: How many total packages are installed on the target system?
+A: 737
+
+Q: How many services are listening on the target system on all interfaces? (Not on localhost and IPv4 only)
+A: 7
+
+
+Q: Determine what user the ProFTPd server is running under. Submit the username as the answer.
+A: proftpd
+
+Q: Use cURL from your Pwnbox (not the target machine) to obtain the source code of the "https://www.inlanefreight.com" website and filter all unique paths of that domain. Submit the number of these paths as the answer.
+A: 34
+
+Q: Which option needs to be set to create a home directory for a new user using "useradd" command?
+A: -m
+
+
+Q: Which option needs to be set to lock a user account using the "usermod" command? (long version of the option)
+A: --lock
+
+
+Q: Which option needs to be set to execute a command as a different user using the "su" command? (long version of the option)
+A: --command
+
+Q: Use the "systemctl" command to list all units of services and submit the unit name with the description "Load AppArmor profiles managed internally by snapd" as the answer.
+A: snapd.apparmor.service
+
+
+Q: What is the type of the service of the "syslog.service"?
+A: notify
+
+
+Q: Find a way to start a simple HTTP server inside Pwnbox or your local VM using "npm". Submit the command that starts the web server on port 8080 (use the short argument to specify the port number).
+A: http-server -p 8080
+
+Q: Find a way to start a simple HTTP server inside Pwnbox or your local VM using "php". Submit the command that starts the web server on the localhost (127.0.0.1) on port 8080.
+A: php -S 127.0.0.1:8080
+
+
+Q: How many partitions exist in our Pwnbox? (Format: 0)
+A: 160
+

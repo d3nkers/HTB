@@ -1,0 +1,36 @@
+HTB INTRODUCTION TO BASH SCRIPTING
+
+Q: Create an "If-Else" condition in the "For"-Loop of the "Exercise Script" that prints you the number of characters of the 35th generated value of the variable "var". Submit the number as the answer.
+A: 1197735
+#!/bin/bash
+# Count number of characters in a variable:
+#     echo $variable | wc -c
+
+# Variable to encode
+var="nef892na9s1p9asn2aJs71nIsm"
+
+for counter in {1..40}
+do
+    var=$(echo $var | base64)
+    
+    if [ $counter -eq 35 ]; then
+        # If it's the 35th iteration, print the number of characters
+        num_chars=$(echo "$var" | wc -c)
+        echo "Number of characters in the 35th iteration: $num_chars"
+    else
+        # If it's not the 35th iteration, do something else (optional)
+        echo "Processing iteration $counter..."
+    fi
+done
+
+Q: Submit the echo statement that would print "www2.inlanefreight.com" when running the last "Arrays.sh" script.
+A: echo ${domains[1]}
+
+
+Q: Create an "If-Else" condition in the "For"-Loop that checks if the variable named "var" contains the contents of the variable named "value". Additionally, the variable "var" must contain more than 113,450 characters. If these conditions are met, the script must then print the last 20 characters of the variable "var". Submit these last 20 characters as the answer.
+A: 2paTlJYTkxDZz09Cg==
+
+
+Q: Create a "For" loop that encodes the variable "var" 28 times in "base64". The number of characters in the 28th hash is the value that must be assigned to the "salt" variable.
+A: HTBL00p5r0x
+

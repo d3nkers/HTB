@@ -1,0 +1,26 @@
+NETWORK ENUMERATION WITH NMAP
+
+Q: Based on the last result, find out which operating system it belongs to. Submit the name of the operating system as result.
+A: Windows
+
+Q: Find all TCP ports on your target. Submit the total number of found TCP ports as the answer.
+A: 7
+
+Q: Enumerate the hostname of your target and submit it as the answer. (case-sensitive)
+A: nix-nmap-default
+
+Q:  Perform a full TCP port scan on your target and create an HTML report. Submit the number of the highest port as the answer.
+A: 31337
+nmap -p- -T4 -oA scan_results <RHOST>
+
+Q; Enumerate all ports and their services. One of the services contains the flag you have to submit as the answer.
+A: HTB{pr0F7pDv3r510nb4nn3r}
+nmap -p- -sV <RHOST>
+
+Q: Use NSE and its scripts to find the flag that one of the services contain and submit it as the answer.
+A: HTB{873nniuc71bu6usbs1i96as6dsv26}
+nmap --script <SCRIPTNAME> -p- <RHOST>
+
+Q: Our client wants to know if we can identify which operating system their provided machine is running on. Submit the OS name as the answer.
+A: Ubuntu
+

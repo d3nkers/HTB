@@ -1,0 +1,74 @@
+HTB CRACKING PASSWORDS WITH HASHCAT
+
+Q: Generate an MD5 hash of the password 'HackTheBox123!'.
+A: 87946d0585ba62c0671b734cada46b41
+echo -n "HackTheBox123!" | md5sum
+
+Q: Create the XOR ciphertext of the password 'opens3same' using the key 'academy'. (Answer format: \x00\x00\x00\....)
+A: \x0e\x13\x04\n\x16^\n\x00\x0e\x04
+
+
+Q: Identify the following hash: $S$D34783772bRXEx1aCsvY.bqgaaSu75XmVlKrW9Du8IQlvxHlmzLc
+A: Drupal > v7.x
+hashid '$S$D34783772bRXEx1aCsvY.bqgaaSu75XmVlKrW9Du8IQlvxHlmzLc'
+
+Q:  What is the hash mode of the hash type Cisco-ASA MD5?
+A: 2410
+
+
+Q: Crack the following hash using the rockyou.txt wordlist: 0c352d5b2f45217c57bef9f8452ce376
+A: cricket1
+
+
+Q: Using the Hashcat combination attack find the cleartext password of the following md5 hash: 19672a3f042ae1b592289f8333bf76c5. Use the supplementary wordlists shown at the end of this section.
+A: frozenapple
+
+
+Q: Crack the following MD5 hash using a mask attack: 50a742905949102c961929823a2e8ca0. Use the following mask: -1 02 'HASHCAT?l?l?l?l?l20?1?d'
+A: HASHCATqrstu2020
+
+
+Q: Crack the following hash: 978078e7845f2fb2e20399d9e80475bc1c275e06 using the mask ?d?s.
+A: hybridmaster9$
+
+
+Q: Crack the following SHA1 hash using the techniques taught for generating a custom rule: 46244749d1e8fb99c37ad4f14fccb601ed4ae283. Modify the example rule in the beginning of the section to append 2020 to the end of each password attempt.
+A: R@c3c@r2020
+
+
+Q: Crack the following hash: 7106812752615cdfe427e01b98cd4083
+A: Password22$
+
+
+Q: Extract the hash from the attached 7-Zip file, crack the hash, and submit the value of the flag.txt file contained inside the archive.
+A: 3c0e87a0396cb26d5b80dc03eeef8ea0
+
+
+Q: Perform MIC cracking using the attached .cap file.
+A: 1212312121
+
+
+Q: Extract the PMKID hash from the attached .cap file and crack it.
+A: 1password
+
+
+Q: What type of hash did your colleague obtain from the SQL injection attack?
+A: SHA-1
+
+
+Q: What is the cleartext password for the hash obtained from SQL injection in example 1?
+A: flower1
+
+
+Q: Crack the TGS ticket obtained from the Kerberoasting attack.
+A: p@ssw0rdadmin
+
+
+Q: What is the cleartext password value for the MS Cache 2 hash?
+A: welcome1
+
+
+Q: After cracking the NTLM password hashes contained in the NTDS.dit file, perform an analysis of the results and find out the MOST common password in the INLANEFREIGHT.LOCAL domain.
+A: freight1
+
+

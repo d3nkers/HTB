@@ -1,0 +1,220 @@
+HTB INTRO TO NETWORK TRAFFIC ANALYSIS
+
+Q: How many layers does the OSI model have?
+A: 7
+
+Q: How many layers are there in the TCP/IP model?
+A: 4
+
+
+Q: True or False: Routers operate at layer 2 of the OSI model?
+A: False
+
+
+Q: What addressing mechanism is used at the Link Layer of the TCP/IP model?
+A: Mac-Address
+
+
+Q: At what layer of the OSI model is a PDU encapsulated into a packet? ( the number )
+A: 3
+
+
+Q: What addressing mechanism utilizes a 32-bit address?
+A: IPv4
+
+
+Q: What Transport layer protocol is connection oriented?
+A: TCP
+
+
+Q: What Transport Layer protocol is considered unreliable?
+A: UDP
+
+
+Q: TCP's three-way handshake consists of 3 packets: 1.Syn, 2.Syn & ACK, 3. _? What is the final packet of the handshake?
+A: ACK
+
+
+Q: What is the default operational mode method used by FTP?
+A: active
+
+
+Q: FTP utilizes what two ports for command and data transfer? (separate the two numbers with a space)
+A: 20 21
+
+
+Q: Does SMB utilize TCP or UDP as its transport layer protocol?
+A: TCP
+
+
+Q: SMB has moved to using what TCP port?
+A: 445
+
+
+Q: Hypertext Transfer Protocol uses what well known TCP port number?
+A: 80
+
+
+Q: What HTTP method is used to request information and content from the webserver?
+A: GET
+
+
+Q: What web based protocol uses TLS as a security measure?
+A: HTTPS
+
+Q: True or False: when utilizing HTTPS, all data sent across the session will appear as TLS Application data?
+A: true
+
+
+Q: Utilizing the output shown in question-1.png, who is the server in this communication? (IP Address)
+A: 174.143.213.184
+
+
+Q: Were absolute or relative sequence numbers used during the capture? (see question-1.zip to answer)
+A: relative
+
+
+Q: If I wish to start a capture without hostname resolution, verbose output, showing contents in ASCII and hex, and grab the first 100 packets; what are the switches used? please answer in the order the switches are asked for in the question.
+A: -nvXc 100
+
+
+Q: Given the capture file at /tmp/capture.pcap, what tcpdump command will enable you to read from the capture and show the output contents in Hex and ASCII? (Please use best practices when using switches)
+A: sudo tcpdump -Xr /tmp/capture.pcap
+
+
+Q: What TCPDump switch will increase the verbosity of our output? ( Include the - with the proper switch )
+A: -v
+
+
+Q: What built in terminal help reference can tell us more about TCPDump?
+A: man
+
+
+Q: What TCPDump switch will let me write my output to a file?
+A: -w
+
+
+Q: What TCPDump switch will allow us to pipe the contents of a pcap file out to another function such as 'grep'?
+A: -l
+
+
+Q: True or False: The filter "port" looks at source and destination traffic.
+A: true
+
+
+Q: If we wished to filter out ICMP traffic from our capture, what filter could we use? ( word only, not symbol please.)
+A: not icmp
+
+
+Q: What command will show you where / if TCPDump is installed?
+A: which tcpdump
+
+
+Q: How do you start a capture with TCPDump to capture on eth0?
+A: tcpdump -i eth0
+
+
+Q: What switch will provide more verbosity in your output?
+A: -v
+
+
+Q: What switch will write your capture output to a .pcap file?
+A: -w
+
+
+Q: What switch will read a capture from a .pcap file?
+A: -r
+
+
+Q: What switch will show the contents of a capture in Hex and ASCII?
+A: -X
+
+
+Q: What filter will allow me to see traffic coming from or destined to the host with an ip of 10.10.20.1?
+A: host 10.10.20.1
+
+
+Q: What filter will allow me to capture based on either of two options?
+A: OR
+
+
+Q: True or False: TCPDump will resolve IPs to hostnames by default.
+A: true
+
+
+Q: What are the client and server port numbers used in first full TCP three-way handshake? (low number first then high number)
+A: 80 43806
+
+
+Q: Based on the traffic seen in the pcap file, who is the DNS server in this network segment? (ip address)
+A: 172.16.146.1
+
+
+Q: True or False: Wireshark can run on both Windows and Linux.
+A: true
+
+
+Q: Which Pane allows a user to see a summary of each packet grabbed during the capture?
+A: Packet List
+
+
+Q: Which pane provides you insight into the traffic you captured and displays it in both ASCII and Hex?
+A: Packet Bytes
+
+
+Q: What switch is used with TShark to list possible interfaces to capture on?
+A: -D
+
+
+Q: What switch allows us to apply filters in TShark?
+A: -f
+
+
+Q: Is a capture filter applied before the capture starts or after? (answer before or after)
+A: before
+
+
+Q: Which plugin tab can provide us with a way to view conversation metadata and even protocol breakdowns for the entire PCAP file?
+A: Statistics
+
+
+Q: What plugin tab will allow me to accomplish tasks such as applying filters, following streams, and viewing expert info?
+A: Analyze
+
+
+Q: What stream oriented Transport protocol enables us to follow and rebuild conversations and the included data?
+A: TCP
+
+
+Q: True or False: Wireshark can extract files from HTTP traffic.
+A: true
+
+
+Q: True or False: The ftp-data filter will show us any data sent over TCP port 21.
+A: false
+
+
+Q: What was the filename of the image that contained a certain Transformer Leader? (name.filetype)
+A: Rise-Up.jpg
+
+
+Q: Which employee is suspected of performing potentially malicious actions in the live environment?
+A: bob
+
+
+Q: What was the name of the new user created on mrb3n's host?
+A: hacker
+
+
+Q: How many total packets were there in the Guided-analysis PCAP?
+A: 44
+
+
+Q: What was the suspicious port that was being used?
+A: 4444
+
+
+Q: What user account was used to initiate the RDP connection?
+A: bucky
+
+

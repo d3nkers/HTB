@@ -1,5 +1,3 @@
-HTB Linux privilege escalation
-
 Q: Enumerate the Linux environment and look for interesting files that might contain sensitive data. Submit the flag as the answer.
 A: HTB{1nt3rn4l_5cr1p7_l34k}
 
@@ -106,8 +104,7 @@ void dbquery() {
 gcc -shared -fPIC -o libexploit.so exploit.c
 ldd --version
 
-Q: Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer.
-A: 
+
 Q: Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer.
 A: HTB{SuD0_e5c4l47i0n_1id}
 sudo -l
@@ -119,3 +116,28 @@ A: HTB{p0Lk1tt3n}
 
 Q: Escalate the privileges and submit the contents of flag.txt as the answer.
 A: HTB{D1rTy_DiR7Y}
+
+Q: Submit the contents of flag1.txt
+A: LLPE{d0n_ov3rl00k_h1dden_f1les!}
+Enumerate hidden files from user
+find /home -type f -name '.*'
+cat /home/htb-student/.config/.flag1.txt
+
+Q: Submit the contents of flag2.txt
+A: LLPE{ch3ck_th0se_cmd_l1nes!}
+LinEnum
+sshpass -p 'i_l0ve_s3cur1ty!' ssh barry_adm@dmz1.inlanefreight.local
+ssh barry@<rhost> with i_l0ve_s3cur1ty!  as password
+
+
+Q: Submit the contents of flag3.txt
+A: LLPE{h3y_l00k_a_fl@g!}
+Login as barry via SSH
+cat /var/log/flag3.txt (found via .bash_history)
+
+Q: Submit the contents of flag4.txt
+A: LLPE{im_th3_m@nag3r_n0w}
+
+
+Q: Submit the contents of flag5.txt
+A: LLPE{0ne_sudo3r_t0_ru13_th3m_@ll!}

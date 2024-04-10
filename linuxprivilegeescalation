@@ -104,7 +104,8 @@ void dbquery() {
 gcc -shared -fPIC -o libexploit.so exploit.c
 ldd --version
 
-
+Q: Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer.
+A: 
 Q: Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer.
 A: HTB{SuD0_e5c4l47i0n_1id}
 sudo -l
@@ -137,6 +138,9 @@ cat /var/log/flag3.txt (found via .bash_history)
 
 Q: Submit the contents of flag4.txt
 A: LLPE{im_th3_m@nag3r_n0w}
+Credentials found in Tomcat config file, use these to login on the http server on 8080 as admin
+Upload war exploit (Metasploit to create payload)
+Reverse shell
 
 
 Q: Submit the contents of flag5.txt

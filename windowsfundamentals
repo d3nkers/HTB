@@ -1,0 +1,72 @@
+HTB WINDOWS FUNDAMENTALS
+
+Q: What is the Build Number of the target workstation?
+A: 19041
+
+Q: Which Windows NT version is installed on the workstation? (i.e. Windows X - case sensitive)
+A: Windows 10
+
+
+Q: Find the non-standard directory in the C drive. Submit the contents of the flag file saved in this directory.
+A: c8fe8d977d3a0c655ed7cf81e4d13c75
+
+
+Q: What system user has full control over the c:\users directory?
+A: bob.smith
+
+
+Q: What protocol discussed in this section is used to share resources on the network using Windows? (Format: case sensitive)
+A: SMB
+
+
+Q: What is the name of the utility that can be used to view logs made by a Windows system? (Format: 2 words, 1 space, not case sensitive)
+A: Event viewer
+
+
+Q: What is the full directory path to the Company Data share we created?
+A: C:\Users\htb-student\Desktop\Company Data
+
+
+Q: Identify one of the non-standard update services running on the host. Submit the full name of the service executable (not the DisplayName) as your answer.
+A: FoxitReaderUpdateService.exe
+
+
+Q: What is the alias set for the ipconfig.exe command?
+A: ifconfig
+
+
+Q: Find the Execution Policy set for the LocalMachine scope.
+A: Unrestricted
+
+
+Q: Use WMI to find the serial number of the system.
+A: 00329-10280-00000-AA938
+
+
+Q: Find the SID of the bob.smith user.
+A: S-1-5-21-2614195641-1726409526-3792725429-1003
+
+
+Q: What 3rd party security application is disabled at startup for the current user? (The answer is case sensitive).
+A: NordVPN
+
+
+Q: What is the name of the group that is present in the Company Data Share Permissions ACL by default?
+A: Everyone
+
+
+Q: What is the name of the tab that allows you to configure NTFS permissions?
+A: Security
+
+
+Q: What is the name of the service associated with Windows Update?
+A: wuauserv
+
+
+Q: List the SID associated with the user account Jim you created.
+A: S-1-5-21-2614195641-1726409526-3792725429-1006
+
+
+Q: List the SID associated with the HR security group you created.
+A: S-1-5-21-2614195641-1726409526-3792725429-1007
+

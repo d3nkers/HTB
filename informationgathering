@@ -1,0 +1,113 @@
+HTB INFORMATION GATHERING - WEB EDITION
+
+Q: Perform a WHOIS lookup against the paypal.com domain. What is the registrar Internet Assigned Numbers Authority (IANA) ID number?
+A: 292
+
+Q: What is the admin email contact for the tesla.com domain (also in-scope for the Tesla bug bounty program)?
+A: admin@dnstinations.com
+
+
+Q: Which IP address maps to inlanefreight.com?
+A: 134.209.24.248
+
+
+Q: Which domain is returned when querying the PTR record for 134.209.24.248?
+A: cloudmonitor30.paypal.com
+
+
+Q: What is the first mailserver returned when querying the MX records for paypal.com?
+A: mx1.paypalcorp.com
+
+vHosts needed for these questions:
+app.inlanefreight.local
+dev.inlanefreight.local
+Q: What Apache version is running on app.inlanefreight.local? (Format: 0.0.0)
+A: 2.4.41
+
+
+Q:  Which CMS is used on app.inlanefreight.local? (Format: word)
+A: Joomla
+
+
+Q: On which operating system is the dev.inlanefreight.local webserver running on? (Format: word)
+A: Ubuntu
+
+
+Q: Submit the FQDN of the nameserver for the "inlanefreight.htb" domain as the answer.
+A: ns.inlanefreight.htb
+
+
+Q: Identify how many zones exist on the target nameserver. Submit the number of found zones as the answer.
+A: 2
+
+
+Q: Find and submit the contents of the TXT record as the answer.
+A: ZONE_TRANSFER{87o2z3cno7zsoiedznxoi82z3o47xzhoi}
+
+
+Q: What is the FQDN of the IP address 10.10.34.136?
+A: ns2.internal.inlanefreight.htb
+
+
+Q: What FQDN is assigned to the IP address 10.10.1.5? Submit the FQDN as the answer.
+A: dc3.internal.inlanefreight.htb
+
+
+Q: Which IP address is assigned to the "us.inlanefreight.htb" subdomain. Submit the IP address as the answer.
+A: 10.10.200.5
+
+
+Q: Submit the number of all "A" records from all zones as the answer.
+A: 27
+
+vHosts needed for these questions:
+www.inlanefreight.htb
+Q: Enumerate the target and find a vHost that contains flag No. 1. Submit the flag value as your answer (in the format HTB{DATA}).
+A: HTB{h8973hrpiusnzjoie7zrou23i4zhmsxi8732zjso}
+
+
+Q: Enumerate the target and find a vHost that contains flag No. 3. Submit the flag value as your answer (in the format HTB{DATA}).
+A: HTB{Fl4gF0uR_o8763tznb4xou7zhgsniud7gfi734}
+
+
+Q: Enumerate the target and find a vHost that contains flag No. 4. Submit the flag value as your answer (in the format HTB{DATA}).
+A: HTB{bzghi7tghin2u76x3ghdni62higz7x3s}
+
+
+Q: Find the specific vHost that starts with the letter "d" and submit the flag value as your answer (in the format HTB{DATA}).
+A: HTB{7zbnr4i3n7zhrxn347zhh3dnrz4dh7zdjfbgn6d}
+
+
+Q: What is the registrar IANA ID number for the githubapp.com domain?
+A: 292
+
+
+Q: What is the last mailserver returned when querying the MX records for githubapp.com?
+A: aspmx5.googlemail.com
+
+
+Q: Perform active infrastructure identification against the host https://i.imgur.com. What server name is returned for the host?
+A: cat factory 1.0
+
+
+Q: Perform subdomain enumeration against the target githubapp.com. Which subdomain has the word 'triage' in the name?
+A: data-triage-reports.githubapp.com
+ffuf -w ./vhosts -u http://<RHOST> -H "HOST: FUZZ.target.domain" -fs 612
+
+Extra:
+DNS zone transfer online test: https://hackertarget.com/zone-transfer/
+https://crt.sh
+
+DNS Enumeration
+nslookup $TARGET - Identify the A record for the target domain.
+nslookup -query=A $TARGET- Identify the A record for the target domain.
+dig $TARGET @<nameserver/RHOST> - Identify the A record for the target domain.
+dig a $TARGET @<nameserver/RHOST>	- Identify the A record for the target domain.
+nslookup -query=PTR <RHOST>	- Identify the PTR record for the target IP address.
+dig -x <IP> @<nameserver/RHOST> - Identify the PTR record for the target IP address.
+nslookup -query=ANY $TARGET - Identify ANY records for the target domain.
+dig any $TARGET @<nameserver/RHOST> - Identify ANY records for the target domain.
+nslookup -query=TXT $TARGET	- Identify the TXT records for the target domain.
+dig txt $TARGET @<nameserver/RHOST> - Identify the TXT records for the target domain.
+nslookup -query=MX $TARGET - Identify the MX records for the target domain.
+dig mx $TARGET @<nameserver/IP> - Identify the MX records for the target domain.

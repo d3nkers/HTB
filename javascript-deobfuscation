@@ -1,0 +1,46 @@
+HTB JAVASCRIPT DEOBFUSCATION
+
+Q: Repeat what you learned in this section, and you should find a secret flag, what is it?
+A: HTB{4lw4y5_r34d_7h3_50urc3}
+
+Q: Using what you learned in this section, try to deobfuscate 'secret.js' in order to get the content of the flag. What is the flag?
+A: HTB{1_4m_7h3_53r14l_g3n3r470r!}
+
+
+Q: Try applying what you learned in this section by sending a 'POST' request to '/serial.php'. What is the response you get?
+A: N2gxNV8xNV9hX3MzY3IzN19tMzU1NGcz
+
+
+Q: Using what you learned in this section, determine the type of encoding used in the string you got at previous exercise, and decode it. To get the flag, you can send a 'POST' request to 'serial.php', and set the data as "serial=YOUR_DECODED_OUTPUT".
+A: HTB{ju57_4n07h3r_r4nd0m_53r14l}
+
+
+Q: Try to study the HTML code of the webpage, and identify used JavaScript code within it. What is the name of the JavaScript file being used?
+A: api.min.js
+
+
+Q: Once you find the JavaScript code, try to run it to see if it does any interesting functions. Did you get something in return?
+A: HTB{j4v45cr1p7_3num3r4710n_15_k3y}
+
+
+Q: As you may have noticed, the JavaScript code is obfuscated. Try applying the skills you learned in this module to deobfuscate the code, and retrieve the 'flag' variable.
+A: HTB{n3v3r_run_0bfu5c473d_c0d3!}
+
+
+Q: Try to Analyze the deobfuscated JavaScript code, and understand its main functionality. Once you do, try to replicate what it's doing to get a secret key. What is the key?
+A: 4150495f70336e5f37333537316e365f31355f66756e
+
+
+Q: Once you have the secret key, try to decide it's encoding method, and decode it. Then send a 'POST' request to the same previous page with the decoded key as "key=DECODED_KEY". What is the flag you got?
+A: HTB{r34dy_70_h4ck_my_w4y_1n_2_HTB}
+
+Tools used:
+https://javascript-minifier.com/
+http://beautifytools.com/javascript-obfuscator.php
+https://jsconsole.com/
+https://obfuscator.io/
+https://beautifier.io/
+https://prettier.io/playground/
+https://matthewfl.com/unPacker.html
+https://www.boxentriq.com/code-breaking/cipher-identifier
+

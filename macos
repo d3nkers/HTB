@@ -1,0 +1,35 @@
+HTB MACOS FUNDAMENTALS
+
+I did this module with a VM on Mac OS.
+
+Q: What BSD derivative is the basis of the macOS operating system?
+A: Darwin
+
+Q: What provides the desktop experience and file management capabilities within macOS?
+A: Finder
+
+
+Q: Find the numeric version running on your machine and submit it as the answer.
+A: 10.14.6
+
+
+Q: Download the above file and double click on it to unzip it. The extracted folder may appear empty, but in reality it has a hidden file with the flag. Can you find the flag?
+A: HTB{F1l3s_c@n_Hide}
+
+
+Q: Where are the Applications related to the system stored at?
+A: /System/Applications
+
+
+Q: If a file has a permission set of "rw-rw-rw-" applied, what would that equal in Octal format? (number only)
+A: 666
+
+
+Q: Search 'homebrew' for 'tmux', and one of the results ends in 'nator'. What is the full name of this package?
+A: tmuxinator
+
+
+Q: Read the zsh configuration shown in the section above to find what command is mapped to 'll'. Submit the command as the answer.
+A: ls -l
+
+

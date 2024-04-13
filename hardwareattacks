@@ -1,0 +1,53 @@
+HTB BRIEF INTRO TO HARDWARE ATTACKS
+
+This is a mini module where I also take extra notes to do research on later when I've finished the module.
+
+Bluetooth Hacking
+Bluetooth technology, designed for short-range wireless communication between devices, is ubiquitous in today's digital era. Despite its convenience, it opens up a new attack surface for hackers. In this section, we'll dive into several types of Bluetooth hacking:
+
+Bluesnarfing: A cyber-attack involving unauthorised access to information from wireless devices through Bluetooth.
+Bluejacking: An attack that sends unsolicited messages to Bluetooth-enabled devices.
+BlueSmacking: A Denial-of-Service attack that overwhelms a device's Bluetooth connection.
+Bluebugging: A technique used to gain control over a device via Bluetooth.
+BlueBorne: A set of vulnerabilities that allow attackers to take control of devices, spread malware, or perform other malicious activities via Bluetooth.
+KNOB (Key Negotiation of Bluetooth): An attack that manipulates the data encryption process during Bluetooth connection establishment, weakening security.
+BIAS (Bluetooth Impersonation AttackS): This attack exploits a vulnerability in the pairing process, allowing an attacker to impersonate a trusted device.
+
+Several modern attacks, including BlueBorne, Key Negotiation of Bluetooth (KNOB) Attack, and Bluetooth Impersonation AttackS (BIAS).
+
+Bluetooth functionality is based on several key concepts, including device pairing, piconets, and data transfer protocols. The first step in establishing a Bluetooth connection is the pairing process. This involves two devices discovering each other and establishing a connection:
+
+Discovery: One device makes itself discoverable, broadcasting its presence to other Bluetooth devices within range.
+Pairing Request: A second device finds the discoverable device and sends a pairing request.
+Authentication: The devices authenticate each other through a process involving a shared secret, known as a link key or long-term key. This may involve entering a PIN on one or both devices.
+
+
+Understanding Microprocessors
+Microprocessors, the (electronically) pulsating heart of our computers and digital devices, are not infallible. They can contain flaws or vulnerabilities that attackers can exploit to perform unauthorised actions within a computer system. These vulnerabilities range from simple design flaws to complex security loopholes.
+
+What is a Microprocessor
+A microprocessor is an integrated circuit (IC) that encapsulates the functions of a central processing unit (CPU) on a single silicon chip. A microprocessor is a type of CPU, but not all CPUs are microprocessors.
+
+
+CVE-2017-5753
+CVE-2017-5754
+CVE-2017-5715
+
+KPTI is the primary mitigation technique against Meltdown.
+Retpoline is an effective mitigation technique for Spectre.
+Changes to how compilers generate code can also help mitigate Spectre. For instance, by introducing specific code constructs or instructions known as barriers.
+
+Q: What is the term used to describe a denial-of-service (DoS) attack that targets Bluetooth-enabled devices by exploiting a vulnerability in the L2CAP Bluetooth protocol to transfer large packets?
+A: BlueSmacking
+
+Q: How many 0-day exploits formed part of BlueBorne?
+A: eight
+
+Q: What is the term for a type of side-channel attack in which an attacker derives information about a cryptographic system by measuring the amount of time the system takes to process different inputs, making informed guesses about the secret key based on observed variations?
+A: Timing Attacks
+
+Q: What performance optimisation technique did Spectre leverage for exploitation?
+A: speculative execution
+
+Q: What performance optimisation technique did Meltdown leverage for exploitation?
+A: out-of-order execution

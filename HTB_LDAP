@@ -1,0 +1,192 @@
+# LDAP HTB Module - Writeup
+
+## License
+Public domain – Free to learn, use and modify.
+
+---
+
+# Module: LDAP Enumeration - Hack The Box Academy
+
+## Writeup: Questions, Answers, and Methods
+
+### Section 1
+
+**RDP to host with user "htb-student" and password "Academy_student_AD!"**
+
+Q: Find the user in the DNSAdmins group (first.last)  
+A: Hazel.Lamb  
+How: Using `Get-ADGroupMember 'DNSAdmins'` in PowerShell.
+
+Q: How many users are in the Help Desk group?  
+A: 3  
+How: Using `Get-ADGroupMember 'Help Desk' | Measure-Object`.
+
+Q: What OU is the Help Desk group managed by?  
+A: microsoft exchange security groups  
+How: Checked the `ManagedBy` property via `Get-ADGroup`.
+
+---
+
+### Section 2
+
+**RDP to host with user "htb-student" and password "Academy_student_AD!"**
+
+Q: Find another disabled user (first.last)  
+A: luke.gibbons  
+How: `Get-ADUser -Filter {Enabled -eq $false}`.
+
+Q: How many users exist in the INLANEFREIGHT.LOCAL domain?  
+A: 1044  
+How: `Get-ADUser -Filter * | Measure-Object`.
+
+Q: How many computers exist in the INLANEFREIGHT.LOCAL domain?  
+A: 5  
+How: `Get-ADComputer -Filter * | Measure-Object`.
+
+Q: How many groups exist in the INLANEFREIGHT.LOCAL domain?  
+A: 73  
+How: `Get-ADGroup -Filter * | Measure-Object`.
+
+---
+
+### Section 3
+
+**RDP to host with user "htb-student" and password "Academy_student_AD!"**
+
+Q: Find another user with DoesNotRequirePreAuth set (first.last)  
+A: ross.begum  
+How: `Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true}`.
+
+Q: Find the SID of the WS01 host  
+A: S-1-5-21-2974783224-3764228556-2640795941-1105  
+How: `Get-ADComputer WS01 | Select-Object SID`.
+
+Q: Find the name of an account with a ServicePrincipalName set that is also a member of the Protected Users group  
+A: sqlprod  
+How: Enumerated SPN accounts and cross-checked with Protected Users.
+
+---
+
+### Section 4
+
+**RDP to host with user "htb-student" and password "Academy_student_AD!"**
+
+Q: Find another group, not listed in the section output, that harry.jones is a member of (case sensitive)  
+A: Network Operations  
+How: `Get-ADUser harry.jones -Properties MemberOf`.
+
+Q: Find another user marked as trusted for delegation  
+A: sql-test  
+How: `Get-ADUser -Filter {TrustedForDelegation -eq $true}`.
+
+Q: Find the number of users in the IT OU  
+A: 118  
+How: `Get-ADUser -Filter * -SearchBase 'OU=IT,DC=INLANEFREIGHT,DC=LOCAL' | Measure-Object`.
+
+---
+
+### Section 5
+
+**RDP to host with user "htb-student" and password "Academy_student_AD!"**
+
+Q: What is the UAC value for DONT_REQ_PREAUTH?  
+A: 4194304  
+How: UAC flag lookup table.
+
+Q: List the user in the Pentest OU (first.last)  
+A: clark.thompson  
+How: `Get-ADUser -Filter * -SearchBase 'OU=Pentest,OU=Employees,DC=INLANEFREIGHT,DC=LOCAL'`.
+
+---
+
+### Section 6
+
+**Authenticate to host with user "james.cross" and password "Academy_Student!"**
+
+Q: What is the domain functional level?  
+A: 2016  
+How: `Get-ADDomain | Select-Object DomainMode`.
+
+Q: Find a user with unconstrained delegation who is also part of the Protected Users group  
+A: sqldev  
+How: Searched delegation flags and group membership.
+
+Q: What OU is the user Kevin Gregory part of (one word, case sensitive)?  
+A: Finance  
+How: `Get-ADUser -Filter {SamAccountName -eq 'kevin.gregory'} | Select DistinguishedName`.
+
+---
+
+### Section 7
+
+**Authenticate to host with user "james.cross" and password "Academy_Student!"**
+
+Q: What is the minimum password length for user accounts in the INLANEFREIGHT.LOCAL domain?  
+A: 7  
+How: `Get-ADDefaultDomainPasswordPolicy`.
+
+Q: What user account requires a smart card for interactive logon (SMARTCARD_REQUIRED)?  
+A: sarah.lafferty  
+How: Filtered userAccountControl flags.
+
+Q: What is the password history size of the domain?  
+A: 5  
+How: `Get-ADDefaultDomainPasswordPolicy`.
+
+Q: What user account has their userAccountControl value set to ENCRYPTED_TEXT_PWD_ALLOWED?  
+A: wilford.stewart  
+How: UAC bitmask lookup.
+
+Q: What is the userAccountControl bitmask for NORMAL_ACCOUNT and ENCRYPTED_TEXT_PWD_ALLOWED?  
+A: 640  
+How: 512 + 128 = 640 (512 = NORMAL_ACCOUNT, 128 = ENCRYPTED_TEXT_PWD_ALLOWED).
+
+---
+
+### Section 8
+
+**RDP to host with user "htb-student" and password "Acad_ad_enum_skillz!"**
+
+Q: Find the one user who has a useraccountcontrol attribute equivalent to 262656  
+A: abigail.henry  
+How: `Get-ADUser -Filter * -Properties userAccountControl` and filtered.
+
+Q: Using built-in tools enumerate a user that has the PASSWD_NOTREQD UAC value set  
+A: clive.jones  
+How: UAC flags search.
+
+Q: What group is the IT Support group nested into?  
+A: Server Technicians  
+How: `Get-ADGroup -Identity 'IT Support' -Properties MemberOf`.
+
+Q: Who is a part of this group through nested group membership?  
+A: sally.andrews  
+How: `Get-ADGroupMember 'Server Technicians'`.
+
+Q: How many users are in the Former Employees OU?  
+A: 103  
+How: `Get-ADUser -SearchBase 'OU=Former Employees,DC=INLANEFREIGHTENUM1,DC=LOCAL' -Filter * | Measure-Object`.
+
+Q: What is the name of the computer that starts with RD?  
+A: RDS01.INLANEFREIGHTENUM1.LOCAL  
+How: `Get-ADComputer -Filter 'Name -like "RD*"'`.
+
+Q: How many groups exist where the admincount attribute is set to 1?  
+A: 13  
+How: `Get-ADGroup -Filter {adminCount -eq 1}`.
+
+Q: What user could be subjected to an ASREPRoasting attack and is NOT a protected user?  
+A: wilbur.douglas  
+How: Enumerated users with DONT_REQ_PREAUTH.
+
+Q: What is the samaccountname of the one SPN set in the domain?  
+A: mssqlprod  
+How: SPN search.
+
+Q: What non-default privilege does the htb-student user have?  (this question was bugged in my lab several times)
+A: SeBackupPrivilege  
+How: `whoami /priv`.
+
+---
+
+# End of Document

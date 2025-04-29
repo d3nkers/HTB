@@ -1,0 +1,211 @@
+# PowerView & SharpView Walkthrough - HTB Assessment
+
+## Inleiding
+Deze walkthrough documenteert hoe ik PowerView en SharpView heb gebruikt om het Active Directory-onderzoek op HTB uit te voeren. Hierin beschrijf ik:
+- De gebruikte commands.
+- De verkregen resultaten.
+- Eventuele fouten of bijzondere situaties.
+- Correcte antwoorden op assessmentvragen.
+
+Tools:
+- PowerView (powershell)
+- SharpView (C# executable)
+
+---
+
+# 1. Domain Enumeration
+
+## 1.1 Enumerate Domain Users
+```powershell
+Get-DomainUser -Properties samaccountname
+```
+**Resultaat**: Gebruikerslijst verkregen.
+
+
+## 1.2 SPN Enumeration
+```powershell
+Get-DomainUser -SPN
+```
+**Resultaat**: SPN gevonden voor `WSUSupdatesvc`.
+
+
+## 1.3 Foreign Group Membership
+```powershell
+Find-ForeignGroup
+```
+**Resultaat**: Gebruiker `bob.barker` is lid van Admin groep van ander domein.
+
+Correct antwoord: **bob.barker**
+
+
+# 2. Enumerating Groups
+
+## 2.1 Group Names ophalen
+```powershell
+Get-DomainGroup -Properties Name
+```
+
+## 2.2 Group Members van specifieke groep
+```powershell
+Get-DomainGroupMember -Identity 'Help Desk'
+```
+**Resultaat**: `harry.jones` en `amber.smith`.
+
+
+## 2.3 Find AdminCount = 1 groups
+```powershell
+Get-DomainGroup -AdminCount
+```
+**Resultaat**: o.a. Administrators, Print Operators.
+
+
+## 2.4 Find Managed Security Groups
+```powershell
+Find-ManagedSecurityGroups
+```
+**Resultaat**: Beheerder van Security Operations is **joe.evans**.
+
+
+## 2.5 Find Local Admin Members op WS01
+```powershell
+Get-NetLocalGroupMember -ComputerName WS01
+```
+**Resultaat**: harry.jones lokaal admin.
+
+
+## 2.6 Remote Management Users op WS01
+```powershell
+Get-NetLocalGroupMember -ComputerName WS01 -GroupName "Remote Management Users"
+```
+**Resultaat**: `samantha.patel`
+
+Correct antwoord: **samantha.patel**
+
+
+# 3. Enumerating Computers
+
+## 3.1 Basisinformatie van alle computers
+```powershell
+Get-DomainComputer -Properties dnshostname,operatingsystem,lastlogontimestamp,useraccountcontrol
+```
+
+**Aantal computers**: **5**
+
+
+## 3.2 Zoek Unconstrained Delegation
+```powershell
+Get-DomainComputer -Unconstrained -Properties dnshostname,useraccountcontrol
+```
+**Resultaat**: `DC01`
+
+
+## 3.3 Zoek Constrained Delegation
+```powershell
+Get-DomainComputer -TrustedToAuth
+```
+**Resultaat**: `SQL01`
+
+
+# 4. ACL Enumeration
+
+## 4.1 Zoek gebruikers met GenericAll over joe.evans
+```powershell
+Get-DomainObjectAcl -Identity 'joe.evans' -ResolveGUIDs | ? { $_.ActiveDirectoryRights -match "GenericAll" }
+```
+**Resultaat**: SID vertaald naar gebruiker.
+
+
+## 4.2 Zoek DCSync-rechten
+```powershell
+Get-ObjectACL "DC=inlanefreight,DC=local" -ResolveGUIDs | ? { ($_.ActiveDirectoryRights -match 'GenericAll') -or ($_.ObjectAceType -match 'Replication-Get') } | Select SecurityIdentifier | Sort -Unique
+Convert-SidToName $dcsync
+```
+**Resultaat**:
+- frederick.walton
+- gillian.fisher
+
+Correct antwoorden: **frederick.walton**, **gillian.fisher**
+
+
+# 5. GPO Enumeration
+
+## 5.1 Zoek Audit Policy GPO
+```powershell
+Get-DomainGPO -Properties displayname,guid | Where-Object { $_.displayname -eq "Audit Policy" } | Format-List *
+```
+**Resultaat**:
+GUID: **8bb15712-8a05-47e7-9dcf-897999d695fe**
+
+
+# 6. Trust Enumeration
+
+## 6.1 Find Domain and Forest Trusts
+```powershell
+Get-DomainTrust
+```
+**Resultaat**:
+- Child Domain: **LOGISTICS.INLANEFREIGHT.LOCAL**
+- Trusted Forest: **freightlogistics.local**
+- Trust Direction: **Bidirectional**
+
+
+# 7. Final Skills Assessment
+
+## 7.1 PasswordHistorySize
+```powershell
+(Get-DomainPolicy).systemaccess
+```
+**Resultaat**: 24
+
+
+## 7.2 SID van rachel.flemmings
+```powershell
+Get-DomainUser -Identity rachel.flemmings | Select-Object objectsid
+```
+
+
+## 7.3 Domain Functional Level
+```powershell
+Get-Domain | Select-Object domainfunctionality
+```
+**Resultaat**: **2**
+
+
+## 7.4 GPO Applied op ENUM2-MS01
+Uiteindelijk via `gpresult /R` gevonden:
+**GPO**: **Disable Defender**
+
+
+## 7.5 Non-standard share op ENUM2-DC01
+```powershell
+Get-NetShare -ComputerName ENUM2-DC01
+```
+**Share**: `Payroll`
+**Bestand inhoud**: `HTB{r3v1ew_s4ar3_p3Rms!}`
+
+
+## 7.6 Computer met password in description
+```powershell
+Get-DomainComputer -Properties description | Select name,description
+```
+**Resultaat**: **ctrx_adm:Just_f0r_adm1n_@cess!**
+
+
+## 7.7 Group Manager Citrix Admins
+```powershell
+Get-DomainGroup -Identity "Citrix Admins" -Properties managedby
+```
+**Resultaat**: **poppy.louis**
+
+
+---
+
+# Samenvatting
+- Altijd combineren: PowerView + SharpView.
+- Bepaalde functies falen -> wisselen tussen beide tools.
+- GPO's bij hosts kun je beter handmatig controleren als LDAP-searchs niks opleveren (via gpresult).
+- ACL en Trust Enumeration geven snel belangrijke privileges bloot.
+- SharpView is sneller, PowerView flexibeler bij foutafhandeling.
+
+---
+

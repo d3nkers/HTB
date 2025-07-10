@@ -1,0 +1,49 @@
+## Prompt Injection Attacks
+
+Q: Obtain the flag by leaking it from the system prompt in "Prompt Leak 1".
+A: HTB{c67652383c2a21b53caf425980b9a427}
+
+Q: Obtain the flag by leaking it from the system prompt in "Prompt Leak 2".
+A: HTB{2df33eee9fd0060d0169fb478e6c8770}
+
+Q: Obtain the password by leaking it from the system prompt in "Prompt Leak 3".
+A: waterfountain
+
+Q: Solve the lab "Direct Prompt Injection 1".
+A: HTB{db4a18dcadf4bd380b93c3e3ede0da90}
+
+Q: Solve the lab "Indirect Prompt Injection 1".
+A: HTB{5b0ddb197e17e2721b8a12034d6168de}
+
+Q: Solve the lab "Indirect Prompt Injection 2".
+A: HTB{340cd5311077b92b1a0481bee4d423c9}
+
+Q: Solve the lab "Indirect Prompt Injection 3".
+A: HTB{b81de5a57cfa9b792dc97cd1882d1da2}
+
+Q: Solve the lab "Indirect Prompt Injection 4".
+A: HTB{26c5bb4c6ee200f83182cfa77d1783f4}
+
+Q: Solve the lab "Indirect Prompt Injection 5".
+A: HTB{c4c59ec220ae06d9c8ebbe1ac4c2ae11}
+
+Q: Solve the lab "Jailbreaking 1".
+A: HTB{a9d1c41b6f13b030b1c1c742e6de533f}
+
+Q: Solve the lab "Jailbreaking 2".
+A: HTB{b24c983bb35d0ba8fb5a7d7eb363a762}
+
+Q: Solve the lab "Prompt Injection Defense 1".
+A: HTB{e49fcf73c0705d6ad28f6e78830c0615}
+
+Q: Solve the lab "Prompt Injection Defense 2".
+A: HTB{4fb27c711b2d0d3612b5c11ab64a65ef}
+
+Q: Solve the lab "Prompt Injection Defense 3".
+A: HTB{200129eda28d80f6ba3825b6a3090380}
+
+## Skills Assessment
+The hardest part of this assessment is getting the correct report after banning the CEO, without this report you cannot pass the assessment.
+TIP: you'll need to work with admin?key=#value in the address bar.
+Q: Obtain the flag by getting the CEO banned from their own website.
+A: HTB{9956f5d9f0ba451ac9919f9a29c5aa2d}

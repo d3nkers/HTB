@@ -105,7 +105,7 @@ gcc -shared -fPIC -o libexploit.so exploit.c
 ldd --version
 
 Q: Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer.
-A: 
+A: HTB{3xpl0i7iNG_Py7h0n_lI8R4ry_HIjiNX}
 Q: Follow along with the examples in this section to escalate privileges. Try to practice hijacking python libraries through the various methods discussed. Submit the contents of flag.txt under the root user as the answer.
 A: HTB{SuD0_e5c4l47i0n_1id}
 sudo -l

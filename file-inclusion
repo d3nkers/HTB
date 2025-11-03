@@ -1,0 +1,54 @@
+# HTB Academy – File Inclusion
+
+> Module: File Inclusion · Notes converted to the same Q/A Markdown style you use in your HTB repo.
+
+## Local File Inclusion (LFI)
+- Q: Using the file inclusion find the name of a user on the system that starts with "b".  
+  A: `barry`
+
+- Q: Submit the contents of the `flag.txt` file located in the `/usr/share/flags` directory.  
+  A: `HTB{n3v3r_tru$t_u$3r_!nput}`
+
+## Basic Bypasses
+- Q: The above web application employs more than one filter to avoid LFI exploitation. Try to bypass these filters to read `/flag.txt`  
+  A: `HTB{64$!c_f!lt3r$_w0nt_$t0p_lf!}`
+
+## PHP Filters
+- Q: Fuzz the web application for other PHP scripts, and then read one of the configuration files and submit the database password as the answer.  
+  A: `HTB{n3v3r_$t0r3_pl4!nt3xt_cr3d$}`
+
+## PHP Wrappers
+- Q: Try to gain RCE using one of the PHP wrappers and read the flag at `/`  
+  A: `HTB{d!$46l3_r3m0t3_url_!nclud3}`
+
+## Remote File Inclusion (RFI)
+- Q: Attack the target, gain command execution by exploiting the RFI vulnerability, and then look for the flag under one of the directories in `/`  
+  A: `99a8fc05f033f2fc0cf9a6f9826f83f4`
+
+## LFI and File Uploads
+- Q: Use any of the techniques covered in this section to gain RCE and read the flag at `/`  
+  A: `HTB{upl04d+lf!+3x3cut3=rc3}`
+
+## Log Poisoning
+- Q: Use any of the techniques covered in this section to gain RCE, then submit the output of the following command: `pwd`  
+  A: `/var/www/html`
+
+- Q: Try to use a different technique to gain RCE and read the flag at `/`  
+  A: `1095_5#0u1d_n3v3r_63_3xp053d}`
+
+## Automated Scanning
+- Q: Fuzz the web application for exposed parameters, then try to exploit it with one of the LFI wordlists to read `/flag.txt`  
+  A: `HTB{4u70m47!0n_f!nd5_#!dd3n_93m5}`
+
+## File Inclusion Prevention
+- Q: What is the full path to the `php.ini` file for Apache?  
+  A: `/etc/php/7.4/apache2/php.ini`
+
+- Q: Edit the `php.ini` file to block `system()`, then try to execute PHP code that uses `system`. Read the `/var/log/apache2/error.log` file and fill in the blank: `system()` has been disabled for ________ reasons.  
+  A: `security`
+
+## Skills Assessment – File Inclusion
+- Q: Assess the web application and use a variety of techniques to gain remote code execution and find a flag in the `/` root directory of the file system. Submit the contents of the flag as your answer.  
+  A: `a9a892dbc9faf9a014f58e007721835e`
+
+---
